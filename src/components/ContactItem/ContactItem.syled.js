@@ -6,7 +6,7 @@ const Contacts = styled.ul`
   li {
     display: flex;
     justify-content: space-between;
-    width: 400px;
+    width: 500px;
     margin-bottom: 20px;
     border: 1px green;
   }

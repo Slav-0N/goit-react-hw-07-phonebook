@@ -3,7 +3,7 @@ import SectionForm from './Form.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import { nanoid } from 'nanoid';
-import { addContact } from 'redux/createSliceContacts';
+import { addContact } from 'redux/operations';
 
 const Form = ({ createUser }) => {
   const contacts = useSelector(getContacts);
@@ -34,13 +34,18 @@ const Form = ({ createUser }) => {
     );
 
     if (isExistContact) return alert('Existing Contact');
+    // let day = New Date()
 
     const newUserElement = {
       name: name,
-      number: number,
+      phone: number,
       id: nanoid(),
+      createdAt: 0,
     };
-    const newUserdata = () => dispatch(addContact(newUserElement));
+    const newUserdata = () => {
+      console.log(newUserElement);
+      return dispatch(addContact(newUserElement));
+    };
     newUserdata();
     setName('');
     setNumber('');
