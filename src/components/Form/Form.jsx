@@ -43,7 +43,6 @@ const Form = ({ createUser }) => {
       createdAt: 0,
     };
     const newUserdata = () => {
-      console.log(newUserElement);
       return dispatch(addContact(newUserElement));
     };
     newUserdata();

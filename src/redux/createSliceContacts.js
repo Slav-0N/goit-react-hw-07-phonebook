@@ -25,15 +25,15 @@ export const changeContactSlice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = state.items - action.payload;
+        const index = state.items.findIndex(
+          item => item.id === action.payload.id
+        );
+        state.items.splice(index, 1);
       })
       .addCase(deleteContact.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
-
-      //contacts.filter(contact => {
-      //   return contact.name.toLowerCase().includes(filter.toLowerCase());
 
       .addCase(addContact.pending, state => {
         state.isLoading = true;
@@ -45,16 +45,6 @@ export const changeContactSlice = createSlice({
       })
       .addCase(addContact.rejected, (state, action) => {
         state.isLoading = false;
-
-        // state.error = action.payload;
       });
   },
 });
-
-// export const {
-//   addContact,
-//   // deleteContact,
-//   // fetchingInProgress,
-//   fetchingSuccess,
-//   fetchingError,
-// } = changeContactSlice.actions;

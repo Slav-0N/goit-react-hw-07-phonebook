@@ -8,7 +8,6 @@ import { setFilter } from 'redux/createSliceFilter';
 const FindName = () => {
   const dispatch = useDispatch();
   const filter = useSelector(getFilter);
-
   const handleChange = ({ target: { value } }) => {
     dispatch(setFilter(value));
   };
